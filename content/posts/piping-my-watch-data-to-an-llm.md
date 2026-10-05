@@ -5,10 +5,10 @@ tags: ["health", "llm", "claude", "git", "android"]
 categories: ["tech"]
 showToc: true
 TocOpen: false
-draft: true # flip to false once the screenshots below are added
+draft: true
 hidemeta: false
 comments: false
-description: "How I got months of watch data (runs, sleep, stress, heart rate) in front of an LLM automatically, and the options I threw away on the way."
+description: "How I got months of watch data (runs, sleep, stress, heart rate) in front of an LLM automatically, and how I got there, one step at a time."
 disableShare: false
 hideSummary: false
 searchHidden: false
@@ -23,15 +23,19 @@ cover:
 
 I was training for a marathon and had settled into a routine. Finish a run, open [Gadgetbridge](https://gadgetbridge.org/) (an open-source app I use in place of the watch maker's own app), take three or four screenshots of pace, heart rate and splits, paste them into Claude, ask "how did that go?".
 
-<!-- TODO: add the screenshots before publishing -->
-![A run as Gadgetbridge shows it](/images/health-data/gadgetbridge-run.png)
-![The screenshots pasted into Claude](/images/health-data/claude-screenshots-chat.png)
-
 It worked, more or less. But two things kept bugging me.
 
 First, it was tedious. Every run meant a handful of screenshots and an LLM squinting at pixels to read numbers that were sitting in a database a few taps away.
 
 Second, and more important, the answers were missing context. A run doesn't happen in isolation. How I slept, how stressed the day was, my resting heart rate over the last week: all of these shape how a run goes. The watch was recording all of it, all day, every day. None of it was making it into the conversation. I was asking a coach about my run while hiding everything else from them.
+
+Here's the same half marathon, asked about both ways:
+
+![Before: three screenshots of the run pasted into the chat, and an answer that can only describe them](/images/health-data/chat-before.png)
+
+![After: the same question with the data repo attached, and an answer that pulls in splits, sleep, resting heart rate and stress](/images/health-data/chat-after.png)
+
+The second answer is the one I wanted all along. The rest of this post is how I got from the first to the second.
 
 So the problem became: **how do I get *all* of my watch data in front of an LLM, without turning it into a chore?**
 
@@ -106,7 +110,19 @@ The whole point was richer context, and it delivered. Now I can ask things like:
 - "How has my resting heart rate moved across this training block?"
 - "Compare today's heart rate at marathon pace with the same pace a month ago."
 
-My favourite moment though was one I wouldn't have got with screenshots. My watch was reporting absurd climbs on flat routes: a 30 km loop in a famously flat city logged 960 m of elevation gain. With all the data in one place, Claude worked out why. My watch has no barometer, so it guesses altitude from GPS, and GPS altitude drifts a lot. Checking the GPS track against an [elevation map of the terrain](https://open-meteo.com/en/docs/elevation-api) (the same thing [Strava does for such watches](https://support.strava.com/hc/en-us/articles/216919447-Elevation)) put the real number at around 57 m. A 17× overstatement. That's now a script in the repo and the corrected numbers sit right next to the watch's own.
+My favourite moment though was one I wouldn't have got with screenshots. My watch kept reporting absurd climbs on flat routes, so I asked:
+
+![Asking why a flat 30 km loop logged 960 m of climbing, and getting the real number back](/images/health-data/chat-elevation.png)
+
+With the raw GPS track in the repo, Claude could check it against an [elevation map of the terrain](https://open-meteo.com/en/docs/elevation-api), the same thing [Strava does for watches like mine](https://support.strava.com/hc/en-us/articles/216919447-Elevation). The real number was around 57 m, not 960. That check is now a script in the repo, and the corrected numbers sit right next to the watch's own.
+
+### Bonus: why the watch was lying
+
+My watch has no barometer. Watches that do have one measure height by [air pressure](https://en.wikipedia.org/wiki/Altimeter), which drops by roughly 1 hPa for every 8 m you climb. That's a small but very steady signal, so they pick up even a short rise.
+
+Without one, the watch falls back to GPS for altitude, and GPS is [much worse at height than at position](https://www.swiftnav.com/glossary/what-is-gnss-accuracy). The satellites are all above you, never below, so there's nothing to pin your height from underneath. Vertical error ends up a few times larger than horizontal, and it wanders slowly over a run. The watch treats every wobble as a climb, and on a 30 km loop the wobbles add up to a respectable hill.
+
+Pace, distance and heart rate don't depend on altitude, so those were fine all along. Just don't believe the elevation figure on a watch without a barometer.
 
 ## Caveats
 
