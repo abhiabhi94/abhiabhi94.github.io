@@ -5,7 +5,8 @@ tags: ["health", "llm", "claude", "git", "android"]
 categories: ["tech"]
 showToc: true
 TocOpen: false
-draft: true
+draft: false
+weight: 1
 hidemeta: false
 comments: false
 description: "How I got months of watch data (runs, sleep, stress, heart rate) in front of an LLM automatically, and how I got there, one step at a time."
@@ -89,12 +90,15 @@ So the question shrank to: *how do I get a file from my phone into a Git repo, o
 
 ![Watch to Gadgetbridge to GitSync to GitHub to Claude Code](/images/health-data/pipeline.svg)
 
-Four pieces, each doing one thing:
+Five pieces, each doing one thing:
 
 1. **Gadgetbridge** already talks to the watch over Bluetooth and keeps everything in a local SQLite database (a single-file database). It has a built-in [auto export](https://gadgetbridge.org/internals/development/data-management/) that copies that database to a folder of your choice every few hours, plus an option to drop a `.fit` file (the standard workout file format) for every new activity.
 2. **[GitSync](https://github.com/ViscousPot/GitSync)** is a small open-source Android app that keeps a folder in sync with a Git repo in the background. Point it at the export folder, give it a schedule, done.
-3. **A private GitHub repo** receives the pushes. A small [GitHub Action](https://docs.github.com/en/actions) runs on every push and turns the raw database into a handful of readable CSVs: a daily summary, sleep per night, stress per day, workouts, per-kilometre splits. LLMs are much happier reading a CSV than poking around a database with 170 tables, most of them empty.
-4. **Claude Code** opens the repo from my phone or laptop and can actually *run* things against the data: query the database, crunch the CSVs, open a single run's `.fit` file for per-second detail.
+3. **A private GitHub repo** receives the pushes and keeps every version. It's the one place everything else connects to.
+4. **A [GitHub Action](https://docs.github.com/en/actions)** runs on every push and turns the raw database into a handful of readable CSVs: a daily summary, sleep per night, stress per day, workouts, per-kilometre splits. It also fixes the watch's elevation numbers (more on that below). LLMs are much happier reading a CSV than poking around a database with 170 tables, most of them empty.
+5. **Claude Code** opens the repo from my phone or laptop and can actually *run* things against the data. The CSVs answer most everyday questions; when they don't, it queries the database directly or opens a single run's `.fit` file for per-second detail.
+
+**The Action is the quiet hero here: the phone only has to drop a file, and all the cleanup happens for free on GitHub's machines, with no server of my own to run.**
 
 The one-time setup was an evening. Since then I haven't touched it. I go for a run, the watch syncs to the phone, and a little later the data is in the repo without me lifting a finger.
 
