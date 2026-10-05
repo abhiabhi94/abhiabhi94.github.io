@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 220" font-family="-apple-system, Segoe UI, Roboto, sans-serif" role="img" aria-label="Smartwatch to Gadgetbridge to GitSync to GitHub to Claude Code">
+  <rect width="960" height="220" rx="12" fill="#ffffff"/>
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <g font-size="15" text-anchor="middle" fill="#1f2328">
+    <rect x="20" y="60" width="140" height="80" rx="10" fill="#eef4ff" stroke="#4a6fa5"/>
+    <text x="90" y="105" font-weight="600">Smartwatch</text>
+
+    <rect x="210" y="60" width="160" height="80" rx="10" fill="#eef4ff" stroke="#4a6fa5"/>
+    <text x="290" y="95" font-weight="600">Gadgetbridge</text>
+    <text x="290" y="117" font-size="12" fill="#555">scheduled auto-export</text>
+
+    <rect x="420" y="60" width="140" height="80" rx="10" fill="#eef4ff" stroke="#4a6fa5"/>
+    <text x="490" y="95" font-weight="600">GitSync</text>
+    <text x="490" y="117" font-size="12" fill="#555">commit + push</text>
+
+    <rect x="610" y="60" width="150" height="80" rx="10" fill="#f3f0ff" stroke="#6b5bb5"/>
+    <text x="685" y="95" font-weight="600">Private repo</text>
+    <text x="685" y="117" font-size="12" fill="#555">Action builds CSVs</text>
+
+    <rect x="810" y="60" width="130" height="80" rx="10" fill="#fff4e8" stroke="#c07a2c"/>
+    <text x="875" y="95" font-weight="600">Claude Code</text>
+    <text x="875" y="117" font-size="12" fill="#555">any device</text>
+  </g>
+  <g stroke="#555" stroke-width="2" marker-end="url(#a)">
+    <line x1="160" y1="100" x2="206" y2="100"/>
+    <line x1="370" y1="100" x2="416" y2="100"/>
+    <line x1="560" y1="100" x2="606" y2="100"/>
+    <line x1="760" y1="100" x2="806" y2="100"/>
+  </g>
+  <g font-size="12" fill="#555" text-anchor="middle">
+    <text x="185" y="88">BT</text>
+    <text x="395" y="88">file</text>
+    <text x="585" y="88">git</text>
+    <text x="785" y="88">clone</text>
+  </g>
+  <path d="M210,155 v10 h350 v-10" fill="none" stroke="#999" stroke-width="1.5"/>
+  <text x="385" y="185" font-size="12" fill="#555" text-anchor="middle">on the phone, no manual step</text>
+</svg>
