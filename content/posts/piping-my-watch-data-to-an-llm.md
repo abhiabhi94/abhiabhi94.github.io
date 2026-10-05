@@ -1,5 +1,5 @@
 ---
-title: "Piping my watch data to an LLM, without the middlemen"
+title: "Piping my watch data to an LLM, without the intermediaries"
 date: 2026-10-05T10:00:00+05:30
 tags: ["health", "llm", "claude", "git", "android"]
 categories: ["tech"]
@@ -40,7 +40,7 @@ So the problem became: **how do I get *all* of my watch data in front of an LLM,
 Before looking at options, I wrote down what I actually wanted. This list did most of the work later, because almost every option failed one of these:
 
 1. **All the data**, not just workouts. Sleep, stress, resting heart rate, daily heart rate, body battery.
-2. **As few middlemen as possible.** This is health data. Part of the reason I use Gadgetbridge is to keep it off the watch maker's servers. I didn't want to undo that by shipping it somewhere else.
+2. **As few intermediaries as possible.** This is health data. Part of the reason I use Gadgetbridge is to keep it off the watch maker's servers. I didn't want to undo that by shipping it somewhere else.
 3. **Automatic.** Some one-time setup is fine. A manual step after every run is not; that's just the screenshot ritual in a different outfit.
 4. **Available anywhere.** If I'm out after a long run with only my phone, I should still be able to ask questions about it.
 
@@ -51,7 +51,7 @@ The obvious answer. Strava has an [official MCP connector](https://support.strav
 It failed three of the four checks:
 
 - **It only knows about activities.** Strava is built around workouts. My sleep, stress and resting heart rate don't live there, so the most interesting context was missing by design.
-- **It's another middleman.** I'd have to upload my data to Strava first, which is exactly what I was trying to avoid. And Strava's relationship with third parties hasn't exactly been stable; in 2024 they [rewrote their API terms](https://communityhub.strava.com/developers-api-7/api-agreement-update-how-data-appears-on-3rd-party-apps-7636), including a ban on third parties feeding Strava data into AI models, which [broke a fair few apps](https://www.dcrainmaker.com/2024/11/stravas-changes-to-kill-off-apps.html). Not something I want to build on.
+- **It's another intermediary.** I'd have to upload my data to Strava first, which is exactly what I was trying to avoid. And Strava's relationship with third parties hasn't exactly been stable; in 2024 they [rewrote their API terms](https://communityhub.strava.com/developers-api-7/api-agreement-update-how-data-appears-on-3rd-party-apps-7636), including a ban on third parties feeding Strava data into AI models, which [broke a fair few apps](https://www.dcrainmaker.com/2024/11/stravas-changes-to-kill-off-apps.html). Not something I want to build on.
 - **It's [subscribers only](https://support.strava.com/en-us/articles/15401526-strava-api-and-mcp-faq).** Paying a monthly fee to read my own data back felt backwards.
 
 ## Option 2: plug the watch into the laptop
@@ -114,7 +114,7 @@ My favourite moment though was one I wouldn't have got with screenshots. My watc
 
 **None of this is Claude-specific.** Anything that can connect to a GitHub repo and run code against it will work the same way: Codex, or whatever ships next month. That was a nice side effect of picking a boring, widely supported building block.
 
-**GitHub is still a middleman.** I'm not pretending otherwise. The trade I made was swapping a fitness company, whose business is my data, for a private repo on a code host, whose business isn't. If that's still too much, the same setup works with a self-hosted Git server, since GitSync speaks plain Git.
+**GitHub is still an intermediary.** I'm not pretending otherwise. The trade I made was swapping a fitness company, whose business is my data, for a private repo on a code host, whose business isn't. If that's still too much, the same setup works with a self-hosted Git server, since GitSync speaks plain Git.
 
 **The repo will grow.** The database is replaced wholesale on every sync, and Git keeps every version. Mine is ~20 MB today, so there's plenty of headroom before GitHub's [file size limits](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github) start to matter. But it's worth knowing it's there.
 
