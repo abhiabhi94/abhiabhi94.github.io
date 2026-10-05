@@ -35,6 +35,8 @@ Here's the same half marathon, asked about both ways:
 
 ![After: the same question with the data repo attached, and an answer that pulls in splits, sleep, resting heart rate and stress](/images/health-data/chat-after.png)
 
+*The chat screenshots in this post were recreated with AI, so none of my actual chats or personal details end up on the internet. I'm a little paranoid about privacy. 🙈*
+
 The second answer is the one I wanted all along. The rest of this post is how I got from the first to the second.
 
 So the problem became: **how do I get *all* of my watch data in front of an LLM, without turning it into a chore?**
