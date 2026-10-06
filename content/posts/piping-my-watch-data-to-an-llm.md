@@ -110,12 +110,14 @@ So the repo has a `CLAUDE.md` file, which Claude Code reads automatically at the
 
 ## The payoff: better questions
 
-The whole point was richer context, and it delivered. Now I can ask things like:
+The whole point was richer context, and it delivered. The questions worth asking now are the ones that cut across everything the watch records:
 
-- "How has my aerobic capacity changed over the past few months, accounting for temperature, humidity and the different routes I've run?"
-- "My long run felt terrible today. Anything in the last three nights of sleep or stress that explains it?"
-- "How has my resting heart rate moved across this training block?"
-- "Compare today's heart rate at marathon pace with the same pace a month ago."
+- "Which actually predicts a good run the next morning: how long I slept, how much deep sleep I got, or what time I went to bed?"
+- "After a long run, how many days until my resting heart rate is back to normal? Is that getting quicker than it was in April?"
+- "Race day is forecast at 24°C and 85% humidity. Based on how I've run in similar weather, what's a realistic marathon pace?"
+- "Do my easy runs drift into hard efforts on high-stress days?"
+
+None of these are about a single run, and none could be answered from a screenshot.
 
 My favourite moment though was one I wouldn't have got with screenshots. My watch kept reporting absurd climbs on flat routes, so I asked:
 
