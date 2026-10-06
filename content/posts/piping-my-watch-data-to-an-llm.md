@@ -30,15 +30,15 @@ First, it was tedious. Every run meant a handful of screenshots and an LLM squin
 
 Second, and more important, the answers were missing context. A run doesn't happen in isolation. How I slept, how stressed the day was, my resting heart rate over the last week: all of these shape how a run goes. The watch was recording all of it, all day, every day. None of it was making it into the conversation. I was asking a coach about my run while hiding everything else from them.
 
-Here's the same half marathon, asked about both ways:
+Here's a question I actually wanted answered, asked both ways:
 
-![Before: three screenshots of the run pasted into the chat, and an answer that can only describe them](/images/health-data/chat-before.png)
+![Before: three run screenshots pasted into the chat, and an answer that can't get started without months of runs, weather and route data](/images/health-data/chat-before.png)
 
-![After: the same question with the data repo attached, and an answer that pulls in splits, sleep, resting heart rate and stress](/images/health-data/chat-after.png)
+![After: the same question with the data repo attached, and an answer that adjusts months of runs for weather and hills, then explains the trend](/images/health-data/chat-after.png)
 
 *The chat screenshots in this post were recreated with AI, so none of my actual chats or personal details end up on the internet. I'm a little paranoid about privacy. 🙈*
 
-The second answer is the one I wanted all along. The rest of this post is how I got from the first to the second.
+The second answer is the one I wanted all along, even if it wasn't the one I was hoping for. To get there, Claude pulled the weather for every run on its own, something no pile of screenshots could have given it. The rest of this post is how I got from the first to the second.
 
 So the problem became: **how do I get *all* of my watch data in front of an LLM, without turning it into a chore?**
 
@@ -112,6 +112,7 @@ So the repo has a `CLAUDE.md` file, which Claude Code reads automatically at the
 
 The whole point was richer context, and it delivered. Now I can ask things like:
 
+- "How has my aerobic capacity changed over the past few months, accounting for temperature, humidity and the different routes I've run?"
 - "My long run felt terrible today. Anything in the last three nights of sleep or stress that explains it?"
 - "How has my resting heart rate moved across this training block?"
 - "Compare today's heart rate at marathon pace with the same pace a month ago."
