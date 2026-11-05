@@ -36,11 +36,15 @@ Leaving ads out was a conscious choice from the start. They break your attention
 
 Bent arrows sit on a grid. Tap one and it slides out the way its head points. If another arrow is in the way, it bumps back and you lose a life. Clear every arrow to finish the level.
 
+![Level 6 of Arrow: 30 bent arrows on a grid, with the clock, the arrows-out count and three lives above, and four buttons below](/images/arrow/level-06.png)
+
 When you run out of lives or hints, you solve a riddle to carry on. The riddles are simple but a bit quirky, and there are 250 of them in each language, English and Hindi.
 
 ![The riddle card: "I follow you all day long and stretch out tall at sunset, but I vanish the moment the lights go out. What am I?"](/images/arrow/riddle.png)
 
-## Learning 1: Keep the screen clean, and put the difficulty somewhere else
+## What I learned
+
+### Keep the screen clean, and put the difficulty somewhere else
 
 I wanted the screen to stay as simple as the rule: thin dark arrows like a printed puzzle, the clock and lives above, four buttons below.
 
@@ -57,7 +61,7 @@ So the difficulty had to come from somewhere other than crowding:
 
 Level 140 has 167 arrows, more than level 100, but never more than thirty on one face, so each arrow is big enough to tap. The level is harder and the screen is calmer. Later chapters build on the block: faces packed so only one arrow can go at a time, then a box taller than it is wide, like a phone. There are 250 levels now, and still the same four buttons.
 
-## Learning 2: Claude Code writes working code, not always simple code
+### Claude Code writes working code, not always simple code
 
 Claude Code wrote nearly all of Arrow's code. I was the thought partner and the decision maker: what went in, what stayed out, and how it should look and feel.
 
@@ -65,21 +69,21 @@ Claude doesn't necessarily come up with the clean, simple solution first. It wil
 
 The block is an example. Its first version squeezed the hundred flat levels into fifty and needed a migration to move everyone's progress. The version that shipped leaves levels 1 to 100 as they were and adds the block after them, so nothing needed migrating.
 
-## Learning 3: Judge a change by playing it
+### Judge a change by playing it
 
 Every pull request deploys its own playable web build, with a link in a comment. I reviewed changes by playing them, not by reading Dart I couldn't judge well.
 
-## Learning 4: Write things down for the agent
+### Write things down for the agent
 
 Claude Code reads a `CLAUDE.md` file at the start of every session. In Arrow it holds the rules of the game, the build commands and every gotcha found along the way. Each session starts with what the earlier ones figured out, instead of finding it again.
 
-## Learning 5: Launch early on the Play Store
+### Launch early on the Play Store
 
 A new developer account can't publish straight away. You need 12 testers to keep the app installed for 14 days in a closed test. Then Google asks a set of questions, and approval for the public release took close to another 7 days.
 
 In total, expect about a month from the first test install to going live. Get a rough version into the closed test early, and keep building while you wait.
 
-## Learning 6: Build a web version too
+### Build a web version too
 
 During testing, every change means asking people to update, or uninstall and reinstall, the app. Arrow also runs in the browser, so I could send a link and get feedback without anyone touching their phone.
 
