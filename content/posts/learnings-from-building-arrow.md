@@ -73,6 +73,12 @@ The block is an example. Its first version squeezed the hundred flat levels into
 
 Every pull request deploys its own playable web build, with a link in a comment. I reviewed changes by playing them, not by reading Dart I couldn't judge well.
 
+### Let the agent check its own work
+
+Claude Code ran in the cloud, where there's no Android emulator. So the web build stood in for a phone. A script opens the game in headless Chromium at a phone's size and plays through it: any level, a hint, a bump, a riddle, the desktop layout. It saves a screenshot of each screen, and Claude looks at those to check its own changes before I see them. If the game throws an error along the way, the script fails.
+
+The same script runs on every pull request. The screenshots are saved with the run, and before-and-after shots, with what changed boxed, are posted on the pull request.
+
 ### Write things down for the agent
 
 Claude Code reads a `CLAUDE.md` file at the start of every session. In Arrow it holds the rules of the game, the build commands and every gotcha found along the way. Each session starts with what the earlier ones figured out, instead of finding it again.
