@@ -28,6 +28,20 @@ cover:
 4. [*Making a puzzle game more accessible*]({{< relref "making-a-puzzle-game-more-accessible" >}})
 5. [*The Play Store and individual developers*]({{< relref "the-play-store-and-individual-developers" >}})
 
+## How it got built
+
+I'm a backend developer. I work with Python, Django and databases. I had built one or two apps before Arrow, but I had never shipped a mobile app.
+
+Claude Code wrote nearly all of the code. Arrow is built with Flutter, and I didn't write the Dart. My job was being the thought partner and the decision maker: what went in, what stayed out, and how the game should look and feel.
+
+Most of that job turned out to be keeping things simple. Claude doesn't necessarily come up with the clean, simple solution first. It will happily build something complex that somehow works. A game I want to keep adding to has to stay easy to change, so a lot of my time went into asking whether there was a simpler way, and saying no to the parts we didn't need.
+
+The block is a good example. Its first version squeezed the hundred flat levels into fifty and needed a migration to move everyone's progress onto the new layout. The version that shipped leaves levels 1 to 100 exactly as they were and adds the block after them, so nothing needed migrating. Under the hood, a cube is the same kind of board as a flat level, just six faces laid side by side, which meant saved games and hints needed no changes for it.
+
+For that to work, I had to be able to judge each change without reading the code. The rest of this post is the setup that made that possible.
+
+## No emulator in the cloud
+
 Most of Arrow was written by Claude Code running in the cloud, in [Claude Code on the web](https://code.claude.com/docs/en/claude-code-on-the-web). Each session starts in a fresh container. That container has no Android emulator, because there's no hardware virtualisation to run one on.
 
 So the setup had two jobs. Every session had to be able to build and test the app from scratch. And every change had to be checkable, by the agent and by me, without a phone emulator in the loop.
