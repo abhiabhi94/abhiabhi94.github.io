@@ -49,8 +49,11 @@ def fix(match):
     return f'{attr}="{url[:-1]}.html"'
 
 for page in site.rglob("*.html"):
-    text = page.read_text()
-    page.write_text(re.sub(r'(href|src)="([^"]*)"', fix, text))
+    text = re.sub(r'(href|src)="([^"]*)"', fix, page.read_text())
+    # The artifact host may serve files from another origin, where these make
+    # the browser drop the stylesheet and fall back to its default font.
+    text = re.sub(r'\s(?:integrity="[^"]*"|crossorigin="[^"]*")', "", text)
+    page.write_text(text)
 
 files = sorted(
     str(p.relative_to(site)) for p in site.rglob("*")
