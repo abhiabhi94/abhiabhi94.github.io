@@ -95,7 +95,7 @@ When a session figures something out the hard way, it goes in there, and the nex
 
 That covers what the agent checks when it remembers to. CI makes sure the checks run every time.
 
-## The same checks, on every pull request
+## CI catches what the agent forgets to check
 
 Every pull request runs:
 
