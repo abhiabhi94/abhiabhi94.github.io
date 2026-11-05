@@ -93,9 +93,11 @@ Claude Code reads `CLAUDE.md` at the start of every session. In Arrow it describ
 
 When a session figures something out the hard way, it goes in there, and the next session starts with it.
 
-That covers what the agent checks when it remembers to. CI makes sure the checks run every time.
+That covers what the agent knows. What it still needs is something fixed to measure each change against.
 
-## CI catches what the agent forgets to check
+## Give the agent something to check against
+
+An LLM does its best work when it has a fixed reference to compare against: a test that must pass, a budget it must stay under, a screen it can look at. CI is where those references live, and it holds every change to them, every time.
 
 Every pull request runs:
 
