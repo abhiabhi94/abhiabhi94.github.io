@@ -48,11 +48,27 @@ def fix(match):
         return f'{attr}="{url}index.html"'
     return f'{attr}="{url[:-1]}.html"'
 
+# A republished artifact reloads on index.html. Remember the last page opened
+# (in this browser only) and send index.html back to it, unless the reader
+# just chose index.html themselves.
+REMEMBER = """<script>(function(){try{
+var root=new URL(%r,location.href),key='preview-last',page=%r;
+function rel(u){return u.pathname.slice(root.pathname.length)}
+document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href]');
+if(a&&a.origin===location.origin&&a.pathname.indexOf(root.pathname)===0)localStorage.setItem(key,rel(a)||'index.html')});
+var nav=performance.getEntriesByType&&performance.getEntriesByType('navigation')[0];
+if(page==='index.html'&&!(nav&&nav.type==='back_forward')){var last=localStorage.getItem(key);
+if(last&&last!=='index.html'){location.replace(new URL(last,root));return}}
+localStorage.setItem(key,page)}catch(e){}})();</script>"""
+
 for page in site.rglob("*.html"):
     text = re.sub(r'(href|src)="([^"]*)"', fix, page.read_text())
     # The artifact host may serve files from another origin, where these make
     # the browser drop the stylesheet and fall back to its default font.
     text = re.sub(r'\s(?:integrity="[^"]*"|crossorigin="[^"]*")', "", text)
+    path = page.relative_to(site)
+    script = REMEMBER % ("../" * (len(path.parts) - 1) or "./", str(path))
+    text = text.replace("<head>", "<head>" + script, 1)
     page.write_text(text)
 
 files = sorted(
