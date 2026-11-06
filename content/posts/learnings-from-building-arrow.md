@@ -44,6 +44,8 @@ When you run out of lives or hints, you solve a riddle to carry on. The riddles 
 
 ## What I learned
 
+Building it, and getting it onto the Play Store, taught me a few things.
+
 ### Keep the screen clean, and put the difficulty somewhere else
 
 I wanted the screen to stay as simple as the rule: thin dark arrows like a printed puzzle, the clock and lives above, four buttons below.
