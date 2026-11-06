@@ -87,7 +87,7 @@ Claude Code reads a `CLAUDE.md` file at the start of every session. In Arrow it 
 
 ### Launch early on the Play Store
 
-A new developer account can't publish straight away. You need 12 testers to keep the app installed for 14 days in a closed test. Then Google asks a set of questions, and approval for the public release took close to another 7 days.
+A new developer account can't publish straight away. You need 12 testers to keep the app installed for 14 days in a closed test. Then Google asks a set of questions, and approval for the public release took another 10 days.
 
 In total, expect about a month from the first test install to going live. Get a rough version into the closed test early, and keep building while you wait.
 
