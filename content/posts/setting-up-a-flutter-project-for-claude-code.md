@@ -6,7 +6,6 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 draft: false
-weight: 1
 hidemeta: false
 comments: false
 description: "The repeatable parts of Arrow's setup: a pinned toolchain, a session hook, the web build standing in for an emulator, CI gates and a playable preview for every pull request."

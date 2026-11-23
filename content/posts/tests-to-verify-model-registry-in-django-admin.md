@@ -1,7 +1,6 @@
 ---
 title: "Add tests to verify registry of models to django admin"
 date: 2021-07-01T11:30:03+00:00
-weight: 4000
 tags: ["python", "django", "tests"]
 categories: ["tech"]
 # author: ["Me", "You"] # multiple authors

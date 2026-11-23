@@ -6,7 +6,6 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 draft: false
-weight: 1
 hidemeta: false
 comments: false
 description: "Why accessibility matters, what it took to make Arrow work with a screen reader, a keyboard, less motion and more time, and how future changes are held to the same standards."
