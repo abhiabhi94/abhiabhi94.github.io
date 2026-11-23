@@ -1,7 +1,6 @@
 ---
 title: "Separate development and production settings for a django project"
 date: 2021-02-01T11:30:03+00:00
-weight: 5000
 tags: ["python", "django"]
 categories: ["tech"]
 # author: ["Me", "You"] # multiple authors

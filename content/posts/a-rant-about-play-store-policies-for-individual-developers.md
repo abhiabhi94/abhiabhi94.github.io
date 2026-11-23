@@ -6,7 +6,6 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 draft: false
-weight: 1
 hidemeta: false
 comments: false
 description: "What it takes for an individual developer to get an app onto the Play Store, day by day, and why it took Arrow close to 25 days after the app was ready."

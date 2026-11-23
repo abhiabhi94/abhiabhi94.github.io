@@ -1,7 +1,6 @@
 ---
 title: "Synchronize panes in tmux"
 date: 2021-05-09T11:30:03+00:00
-weight: 1000
 tags: ["tmux", "shell"]
 categories: ["tech"]
 # author: ["Me", "You"] # multiple authors

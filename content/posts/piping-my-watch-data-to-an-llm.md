@@ -6,7 +6,6 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 draft: false
-weight: 1
 hidemeta: false
 comments: false
 description: "How I got months of watch data (runs, sleep, stress, heart rate) in front of an LLM automatically, and how I got there, one step at a time."

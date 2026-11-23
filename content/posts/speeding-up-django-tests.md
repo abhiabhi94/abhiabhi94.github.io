@@ -1,7 +1,6 @@
 ---
 title: "Speeding up your django tests"
 date: 2021-03-01T11:30:03+00:00
-weight: 2000
 tags: ["python", "django", "tests"]
 categories: ["tech"]
 # author: ["Me", "You"] # multiple authors

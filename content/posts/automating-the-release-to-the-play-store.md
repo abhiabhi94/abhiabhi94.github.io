@@ -6,7 +6,6 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 draft: false
-weight: 1
 hidemeta: false
 comments: false
 description: "How Arrow goes from a version bump to a signed Play Store bundle, and the release mistake that shaped it."

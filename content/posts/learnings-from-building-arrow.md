@@ -6,7 +6,6 @@ categories: ["tech"]
 showToc: true
 TocOpen: false
 draft: false
-weight: 1
 hidemeta: false
 comments: false
 description: "What I learned building Arrow, an Android puzzle game: keeping it clean while it gets harder, working with Claude Code, and getting onto the Play Store."
